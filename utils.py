@@ -130,7 +130,7 @@ def connect_to_webdriver():
 
 
 def finder(driver, folder, confidence=0.5, grayscale=False, min_search_time=3):
-    level_screenshots = [folder + file for file in os.listdir(folder)]
+    level_screenshots = [Path(folder + file) for file in os.listdir(folder)]
 
     # Sort file list alphanumerically then REVERSE!
     # For some reason, the level detection image scanner is more accurate when checking
@@ -148,7 +148,7 @@ def finder(driver, folder, confidence=0.5, grayscale=False, min_search_time=3):
     for screenshot in level_screenshots:
         try:
             location = pyautogui.locateOnScreen(
-                screenshot,
+                str(screenshot.resolve()),
                 confidence=confidence,
                 minSearchTime=min_search_time,
                 grayscale=grayscale,
@@ -163,21 +163,21 @@ def finder(driver, folder, confidence=0.5, grayscale=False, min_search_time=3):
 
                 # Take screenshot of the matched region
                 match_screenshot = pyautogui.screenshot(
-                    region=(left, top, width, height)
+                    region=(int(left), int(top), int(width), int(height))
                 )
 
                 # NOTE: If your debug screenshot is the wrong window, you may have switched apps right before it took it.
                 # Recommend you kill the app RIGHT after it takes the screenshot, using the mouse to screen corner shortcut
                 # Save the matched region screenshot
                 match_filename = (
-                    f"./debugging_screenshots/match_{screenshot.split('/')[-1]}"
+                    Path("./debugging_screenshots/" + screenshot.name)
                 )
                 match_screenshot.save(match_filename)
 
                 send_notification(f"Screenshot found at location {location}", driver)
                 send_notification(f"Match screenshot saved as {match_filename}", driver)
 
-                return screenshot.split("/")[-1].split(".")[0]
+                return screenshot.name.split(".")[0]
         # If the image we're looking for can't be found, or,
         # if the debugging screenshot can't be saved, keep looping
         except (
@@ -202,6 +202,7 @@ def play_level(driver, steps):
         elif isinstance(step, str):
             # pyautogui.press(step)
             pyautogui.keyDown(step)
+            pyautogui.keyUp(step)
 
         # If it's a tuple (), then take the first value as the action (like keyDown)
         # and the second value as the key
@@ -216,7 +217,7 @@ def detect_level(driver):
     selected_level = finder(
         driver,
         "./level_screenshots/",
-        confidence=0.9,
+        confidence=0.7,
         grayscale=True,
         min_search_time=2,
     )

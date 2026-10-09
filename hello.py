@@ -71,15 +71,18 @@ def main(driver):
         # loop over levels
         for level in list(levels[door])[selected_level_index:]:
             while True:
+                # Tap left/right to reset the keys in case they are stuck
                 time.sleep(loading_delay)
-                pyautogui.press("right")
+                pyautogui.keyDown("right")
+                pyautogui.keyUp("right")
                 logging.debug("pressed right")
-                pyautogui.press("left")
+                pyautogui.keyDown("left")
+                pyautogui.keyUp("left")
                 logging.debug("pressed left")
-                send_notification(f"\nlevel {level}", driver)
-                steps = levels[door][level]
 
                 # Run the steps
+                send_notification(f"\nlevel {level}", driver)
+                steps = levels[door][level]
                 play_level(driver, steps)
 
                 # Sleep after finishing a level, to give it time to load the next one
@@ -96,7 +99,8 @@ def main(driver):
                 current_level = detect_level(driver)
                 if current_level == level:
                     send_notification(f"{current_level}, {level}, you died 💀", driver)
-                    pyautogui.press("space")
+                    pyautogui.keyDown("space")
+                    pyautogui.keyUp("space")
                 else:
                     break
                 # END LEVEL SCAN METHOD -------------------------------------------

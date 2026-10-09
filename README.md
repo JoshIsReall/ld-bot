@@ -47,7 +47,8 @@
     action.pointer_action.pointer_up(MouseButton.LEFT)
     action.perform()
     ```
+~~pyautogui.press() is not working, but pyautogui.keyDown() is, for some reason. -- may not be worth fixing as we can just use keyDown all the time~~
+
 
 ## CURRENT TASK:
-current level image scanner is not working, not able to detect the level it's on.
-pyautogui.press() is not working, but pyautogui.keyDown() is, for some reason. -- may not be worth fixing as we can just use keyDown all the time
+current level image scanner is not working, not able to detect the level it's on. TODO: on line 150 of utils.py, change locateOnScreen() to .locate(needleimage, haystackimage) instead (get rid of min search time) and then take a screenshot of the screen manually, and resize it to a standard size before doing the search. also likely need to retake the level_screenshots at this new standard resolution

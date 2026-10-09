@@ -1,8 +1,11 @@
-import pyautogui
 import time
-from level_timings import levels
+
+import pyautogui
 import rumps
+
+from level_timings import levels
 from utils import send_notification
+
 
 def level_tester(driver, dock_mode=False):
     # Manually select a level to use
@@ -23,8 +26,10 @@ def level_tester(driver, dock_mode=False):
     time.sleep(loading_delay)
 
     # reset the keyss incase one is sstill being pressed
-    pyautogui.press("right")
-    pyautogui.press("left")
+    pyautogui.keyDown("right")
+    pyautogui.keyUp("right")
+    pyautogui.keyDown("left")
+    pyautogui.keyUp("left")
 
     selected_door_index = list(levels.keys()).index(selected_door)
 
@@ -32,14 +37,17 @@ def level_tester(driver, dock_mode=False):
     for door in list(levels)[selected_door_index:]:
         send_notification(f"\n\ndoor {door}", driver)
         time.sleep(loading_delay)
-        pyautogui.press("space")
+        pyautogui.keyDown("space")
+        pyautogui.keyUp("space")
         selected_level_index = list(levels[door].keys()).index(selected_level)
 
         # loop over levels
         for level in list(levels[door])[selected_level_index:]:
             time.sleep(loading_delay)
-            pyautogui.press("right")
-            pyautogui.press("left")
+            pyautogui.keyDown("right")
+            pyautogui.keyUp("right")
+            pyautogui.keyDown("left")
+            pyautogui.keyUp("left")
 
             send_notification(f"\nlevel {level}", driver)
             steps = levels[door][level]
@@ -54,7 +62,8 @@ def level_tester(driver, dock_mode=False):
 
                 # If it's a string, press that key
                 elif isinstance(step, str):
-                    pyautogui.press(step)
+                    pyautogui.keyDown(step)
+                    pyautogui.keyUp(step)
 
                 # If it's a tuple (), then take the first value as the action (like keyDown)
                 # and the second value as the key
