@@ -8,4 +8,4 @@ level_screenshots = [
 for screenshot in level_screenshots:
     with Image.open(screenshot) as img:
         bw = grayscale(img)
-        bw.save(screenshot.replace(".png", "_bw.png"))
+        bw.save(screenshot.replace(".png", "_bw.png"), icc_profile=None)

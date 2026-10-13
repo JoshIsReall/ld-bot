@@ -129,7 +129,7 @@ def connect_to_webdriver():
 #     return driver
 
 
-def finder(driver, folder, confidence=0.5, grayscale=False, min_search_time=3):
+def finder(driver, folder, confidence=0.5, grayscale=False, min_search_time=3, region=None):
     level_screenshots = [Path(folder + file) for file in os.listdir(folder)]
 
     # Sort file list alphanumerically then REVERSE!
@@ -152,6 +152,7 @@ def finder(driver, folder, confidence=0.5, grayscale=False, min_search_time=3):
                 confidence=confidence,
                 minSearchTime=min_search_time,
                 grayscale=grayscale,
+                region=region,
             )
             if location:
                 # Extract coordinates from location tuple
@@ -217,9 +218,10 @@ def detect_level(driver):
     selected_level = finder(
         driver,
         "./level_screenshots/",
-        confidence=0.7,
+        confidence=0.9,
         grayscale=True,
         min_search_time=2,
+        region=(1137, 0, 285, 70)
     )
     # The screenshots are numbered by the actual level number, but our loop
     # starts at zero instead of one, so we need to -1 the number from the screenshot.

@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 levels = {
     "pits": {
         "1": [("keyDown", "right"), 2.6, "up"],
-        "2": [("keyDown", "right"), 2, "up", 0.4, "up"],
+        "2": [("keyDown", "right"), 2, "up", 0.27, "up"],
         "3": [("keyDown", "right"), 1, "up"],
         "4": [
             ("keyDown", "right"),
@@ -24,7 +24,7 @@ levels = {
             0.01,
             ("keyDown", "left"),
             "up",
-            1.2,
+            1.1,
             "up",
         ],
         "2": [("keyDown", "right"), 0.5, "up", 1, "up", 1.4, "up"],
