@@ -27,7 +27,7 @@ levels = {
             1.1,
             "up",
         ],
-        "2": [("keyDown", "right"), 0.5, "up", 1, "up", 1.4, "up"],
+        "2": [("keyDown", "right"), 0.5, "up", 0.7, "up", 1.4, "up"],
         "3": [
             ("keyDown", "right"),
             0.1,
@@ -77,7 +77,7 @@ levels = {
             "up",
         ],
         "2": [("keyDown", "right"), 1.8, "up"],
-        "3": [("keyDown", "right"), 0.1, "up", 1.5, "up"],
+        "3": [("keyDown", "right"), 0.1, "up", 1.4, "up"],
         "4": [
             0.5,
             ("keyDown", "right"),
@@ -102,12 +102,12 @@ levels = {
             "up",
             0.01,
             ("keyUp", "left"),
-            0.3,
             ("keyDown", "right"),
             0.3,
             ("keyUp", "right"),
             ("keyDown", "left"),
             "up",
+            2,
         ],
     },
     "coins": {
@@ -115,28 +115,32 @@ levels = {
         "2": [("keyDown", "right"), 0.3, "up", 1.3, "up"],
         "3": [
             ("keyDown", "right"),
+            5,
         ],
         "4": [
-            1.3,
+            2,
             ("keyDown", "right"),
-            0.15,
-            "up",
-            0.5,
+            1.2,
             "up",
             0.1,
+            ("keyUp", "right"),
+
+            0.3,
+            ("keyDown", "right"),
             "up",
-            0.1,
+            0.3,
+            ("keyUp", "right"),
+
+            0.3,
+            ("keyDown", "right"),
             "up",
-            0.1,
+            0.3,
+            ("keyUp", "right"),
+
+            0.3,
+            ("keyDown", "right"),
             "up",
-            0.1,
-            "up",
-            0.1,
-            "up",
-            0.1,
-            "up",
-            0.1,
-            "up",
+            3,
         ],
         "5": [
             2,
@@ -573,11 +577,11 @@ def normalize_point(x, y, width=None, height=None):
     if not width or not height: 
         width, height = pyautogui.size() 
         
-    print("width, height:", width, height)
-    print("Before x/y:", x, y)
+    logging.debug(f"width, height: {width}, {height}")
+    logging.debug(f"Before x/y: {x}, {y}")
     # Convert percentage-based positions to x/y of current screen resolution
     x, y = int(width * percent_x), int(height * percent_y)
-    print("After x/y:", x, y)
+    logging.debug(f"After x/y: {x}, {y}")
 
     return x, y
 

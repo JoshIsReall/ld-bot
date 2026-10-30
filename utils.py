@@ -63,8 +63,8 @@ def send_notification(message, driver):
                 "MESSAGE_HERE", json.dumps(message)
             )
         )
-    except Exception:
-        logging.info(f"Failed to send notification: {message}")
+    except Exception as err:
+        logging.info(f"Failed to send notification: {message}. {str(err)}")
 
 
 def connect_to_webdriver():
@@ -201,7 +201,6 @@ def play_level(driver, steps):
 
         # If it's a string, press that key
         elif isinstance(step, str):
-            # pyautogui.press(step)
             pyautogui.keyDown(step)
             pyautogui.keyUp(step)
 
@@ -212,6 +211,14 @@ def play_level(driver, steps):
                 pyautogui.keyDown(step[1])
             elif step[0] == "keyUp":
                 pyautogui.keyUp(step[1])
+
+    # TODO: Get rid of this sleep, and instead manually add sleeps to the end of
+    # each level's own timing/steps wherever a level needs it.
+    # Wait for any final walking to happen
+    time.sleep(2)
+    # After all steps, let go of any arrow keys held down
+    pyautogui.keyUp("left")
+    pyautogui.keyUp("right")
 
 
 def detect_level(driver):
