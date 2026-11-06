@@ -212,10 +212,7 @@ def play_level(driver, steps):
             elif step[0] == "keyUp":
                 pyautogui.keyUp(step[1])
 
-    # TODO: Get rid of this sleep, and instead manually add sleeps to the end of
-    # each level's own timing/steps wherever a level needs it.
-    # Wait for any final walking to happen
-    time.sleep(2)
+    
     # After all steps, let go of any arrow keys held down
     pyautogui.keyUp("left")
     pyautogui.keyUp("right")

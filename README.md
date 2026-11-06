@@ -50,7 +50,7 @@
 ~~pyautogui.press() is not working, but pyautogui.keyDown() is, for some reason. -- may not be worth fixing as we can just use keyDown all the time~~
 ~~current level image scanner is not working, not able to detect the level it's on. TODO: on line 150 of utils.py, change locateOnScreen() to .locate(needleimage, haystackimage) instead (get rid of min search time) and then take a screenshot of the screen manually, and resize it to a standard size before doing the search. also likely need to retake the level_screenshots at this new standard resolution --~~ fixed: new screenshots were needed at the new resolution, and adjusted the confidence and region so it only scans the tiny region of the screen where the dots are.
 ~~level starts seem to be off on timing of kicking off the movements~~ -- fixed: removed our left/right keypress at the level start, it was messing up timings. Added a keyup release at the end of play_level() to ensure keys are let go of, they were leaking into the next level.
-
+~~reset our savegame, and play through fresh, adding delays to the end of any levels that need it so we can delete line 218 of utils.py~~
 
 ## CURRENT TASK:
-reset our savegame, and play through fresh, adding delays to the end of any levels that need it so we can delete line 218 of utils.py
+fix level timings

@@ -9,12 +9,13 @@ levels = {
     "pits": {
         "1": [("keyDown", "right"), 2.6, "up"],
         "2": [("keyDown", "right"), 2, "up", 0.27, "up"],
-        "3": [("keyDown", "right"), 1, "up"],
-        "4": [
+        "3": [
             ("keyDown", "right"),
+            1,
             "up",
         ],
-        "5": [("keyDown", "right"), 2.8, "up"],
+        "4": [("keyDown", "right"), "up", 4],
+        "5": [("keyDown", "right"), 2.8, "up", 2],
     },
     "spikes": {
         "1": [
@@ -26,8 +27,9 @@ levels = {
             "up",
             1.1,
             "up",
+            3,
         ],
-        "2": [("keyDown", "right"), 0.5, "up", 0.7, "up", 1.4, "up"],
+        "2": [("keyDown", "right"), 0.5, "up", 0.7, "up", 1.4, "up", 1],
         "3": [
             ("keyDown", "right"),
             0.1,
@@ -35,6 +37,7 @@ levels = {
             1.5,
             "up",
             ("keyDown", "right"),
+            1,
         ],
         "4": [
             ("keyDown", "right"),
@@ -48,6 +51,7 @@ levels = {
             "up",
             0.3,
             "up",
+            1,
         ],
         "5": [
             ("keyDown", "left"),
@@ -59,6 +63,7 @@ levels = {
             0.6,
             ("keyDown", "left"),
             "up",
+            6,
         ],
     },
     "push": {
@@ -68,16 +73,17 @@ levels = {
             "up",
             0.4,
             ("keyUp", "right"),
-            0.8,
+            0.5,
             ("keyDown", "left"),
             "up",
             0.2,
             ("keyUp", "left"),
             ("keyDown", "right"),
             "up",
+            1,
         ],
-        "2": [("keyDown", "right"), 1.8, "up"],
-        "3": [("keyDown", "right"), 0.1, "up", 1.4, "up"],
+        "2": [("keyDown", "right"), 1.8, "up", 1],
+        "3": [("keyDown", "right"), 0.1, "up", 1.4, "up", 1],
         "4": [
             0.5,
             ("keyDown", "right"),
@@ -95,6 +101,7 @@ levels = {
             ("keyDown", "right"),
             0.5,
             "up",
+            1,
         ],
         "5": [
             ("keyDown", "left"),
@@ -103,7 +110,7 @@ levels = {
             0.01,
             ("keyUp", "left"),
             ("keyDown", "right"),
-            0.3,
+            0.4,
             ("keyUp", "right"),
             ("keyDown", "left"),
             "up",
@@ -111,8 +118,8 @@ levels = {
         ],
     },
     "coins": {
-        "1": [("keyDown", "right"), 2, "up"],
-        "2": [("keyDown", "right"), 0.3, "up", 1.3, "up"],
+        "1": [("keyDown", "right"), 2, "up", 2],
+        "2": [("keyDown", "right"), 0.3, "up", 1.3, "up", 2],
         "3": [
             ("keyDown", "right"),
             5,
@@ -124,90 +131,124 @@ levels = {
             "up",
             0.1,
             ("keyUp", "right"),
-
+            0.2,
+            ("keyDown", "right"),
+            "up",
+            0.2,
+            ("keyUp", "right"),
             0.3,
             ("keyDown", "right"),
             "up",
             0.3,
             ("keyUp", "right"),
-
-            0.3,
-            ("keyDown", "right"),
-            "up",
-            0.3,
-            ("keyUp", "right"),
-
             0.3,
             ("keyDown", "right"),
             "up",
             3,
         ],
         "5": [
-            2,
-            ("keyDown", "right"),
-            0.5,
-            "up",
-            0.5,
-            "up",
-            0.5,
-            "up",
-            # ///
-            1,
-            "up",
-            0.5,
-            "up",
-            0.5,
-            "up",
-            # ///
-            1,
-            "up",
-            1,
-            "up",
-            1,
-            # jump onto last step
-            "up",
-            ("keyUp", "right"),
             0.5,
             ("keyDown", "right"),
+            0.27,
             "up",
-            0.8,
-            "up",
-            0.5,
-            "up",
-            0.5,
-            "up",
-            0.5,
-            "up",
-            0.8,
+            0.292,
             ("keyUp", "right"),
-            ("keyDown", "left"),
+            0.195,
+            ("keyDown", "right"),
+            0.067,
+            "up",
+            0.285,
+            ("keyUp", "right"),
+            0.157,
+            "up",
+            0.0,
+            ("keyDown", "right"),
+            0.419,
+            ("keyUp", "right"),
+            0.06,
+            ("keyDown", "right"),
+            0.345,
+            "up",
+            0.442,
+            "up",
+            0.486,
+            "up",
+            0.802,
+            "up",
+            0.456,
+            "up",
+            0.465,
+            "up",
+            0.412,
+            ("keyUp", "right"),
+            0.441,
+            ("keyDown", "right"),
+            0.024,
+            "up",
+            0.321,
+            ("keyUp", "right"),
+            0.15,
+            ("keyDown", "right"),
+            0.06,
+            "up",
+            0.315,
+            ("keyUp", "right"),
+            0.111,
+            ("keyDown", "right"),
+            0.105,
+            "up",
+            0.225,
+            ("keyUp", "right"),
+            0.15,
+            ("keyDown", "right"),
+            0.037,
+            "up",
+            0.218,
+            ("keyUp", "right"),
+            0.172,
+            ("keyDown", "right"),
+            0.052,
+            "up",
+            0.21,
+            ("keyUp", "right"),
+            1.138,
+            ("keyDown", "right"),
+            0.217,
+            ("keyUp", "right"),
+            0.135,
+            ("keyDown", "right"),
+            0.135,
+            ("keyUp", "right"),
         ],
     },
     "controls": {
         "1": [
             ("keyDown", "left"),
+            3,
         ],
         "2": [
             ("keyDown", "right"),
             0.2,
             "up",
-            1,
+            0.8,
+            "up",
+            0.6,
             "up",
             0.5,
             "up",
-            0.8,
-            "up",
+            1,
         ],
         "3": [
             ("keyDown", "left"),
+            0.6,
+            "up",
+            0.8,
+            "up",
             0.7,
             "up",
-            0.8,
+            0.7,
             "up",
-            0.8,
-            "up",
-            0.8,
-            "up",
+            1,
         ],
         "4": [("keyDown", "right"), 0.9, "up", 1.4, "up", 0.8, "up"],
         "5": [
@@ -232,9 +273,10 @@ levels = {
             ("keyDown", "right"),
             0.5,
             "up",
+            1,
         ],
     },
-    "platforms":{
+    "platforms": {
         "1": [
             ("keyDown", "right"),
             0.5,
@@ -242,12 +284,7 @@ levels = {
             6,
             ("keyDown", "right"),
         ],
-        "2": [
-            3,
-            ("keyDown", "left"),
-            1,
-            "up"
-        ],
+        "2": [3, ("keyDown", "left"), 1, "up"],
         "3": [
             ("keyDown", "right"),
             2,
@@ -315,10 +352,10 @@ levels = {
             ("keyUp", "right"),
             1,
             ("keyDown", "right"),
-            "up"
-        ]
+            "up",
+        ],
     },
-    "springs":{
+    "springs": {
         "1": [
             ("keyDown", "left"),
             3,
@@ -348,19 +385,19 @@ levels = {
             0.8,
             ("keyUp", "right"),
             0.1,
-             ("keyDown", "right"),
+            ("keyDown", "right"),
             0.8,
             ("keyUp", "right"),
             0.1,
-             ("keyDown", "right"),
+            ("keyDown", "right"),
             0.8,
             ("keyUp", "right"),
             0.1,
-             ("keyDown", "right"),
+            ("keyDown", "right"),
             0.8,
             ("keyUp", "right"),
             0.1,
-             ("keyDown", "right"),
+            ("keyDown", "right"),
         ],
         "4": [
             ("keyDown", "right"),
@@ -369,162 +406,70 @@ levels = {
             0.3,
             ("keyDown", "right"),
         ],
-        "5": [
-
-        ],
+        "5": [],
     },
-    "warps":{
-        "1": [
-
-        ],
-        "2": [
-
-        ],
-        "3": [
-
-        ],
-        "4": [
-
-        ],
-        "5": [
-
-        ],
+    "warps": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
     },
-    "scale":{
-        "1": [
-
-        ],
-        "2": [
-
-        ],
-        "3": [
-
-        ],
-        "4": [
-
-        ],
-        "5": [
-
-        ],
+    "scale": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
     },
-    "sdoors":{
-        "1": [
-
-        ],
-        "2": [
-
-        ],
-        "3": [
-
-        ],
-        "4": [
-
-        ],
-        "5": [
-
-        ],
+    "sdoors": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
     },
-    "saws":{
-        "1": [
-
-        ],
-        "2": [
-
-        ],
-        "3": [
-
-        ],
-        "4": [
-
-        ],
-        "5": [
-
-        ],
+    "saws": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
     },
-    "flappy":{
-        "1": [
-
-        ],
-        "2": [
-
-        ],
-        "3": [
-
-        ],
-        "4": [
-
-        ],
-        "5": [
-
-        ],
+    "flappy": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
     },
-     "gravity":{
-        "1": [
-
-        ],
-        "2": [
-
-        ],
-        "3": [
-
-        ],
-        "4": [
-
-        ],
-        "5": [
-
-        ],
+    "gravity": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
     },
-    "movement":{
-        "1": [
-
-        ],
-        "2": [
-
-        ],
-        "3": [
-
-        ],
-        "4": [
-
-        ],
-        "5": [
-
-        ],
+    "movement": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
     },
-    "wraparound":{
-        "1": [
-
-        ],
-        "2": [
-
-        ],
-        "3": [
-
-        ],
-        "4": [
-
-        ],
-        "5": [
-
-        ],
+    "wraparound": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
     },
-    "final":{
-        "1": [
-
-        ],
-        "2": [
-
-        ],
-        "3": [
-
-        ],
-        "4": [
-
-        ],
-        "5": [
-
-        ],
+    "final": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
     },
 }
 
@@ -567,6 +512,7 @@ door_positions = {
     "final": (2180, 749),
 }
 
+
 # Convert x/y positions that were specific to one screen,
 # into positions specific to current computer screen resolution
 def normalize_point(x, y, width=None, height=None):
@@ -574,9 +520,9 @@ def normalize_point(x, y, width=None, height=None):
     percent_x, percent_y = x / original_screen_width, y / original_screen_height
 
     # Get current-screen resolution
-    if not width or not height: 
-        width, height = pyautogui.size() 
-        
+    if not width or not height:
+        width, height = pyautogui.size()
+
     logging.debug(f"width, height: {width}, {height}")
     logging.debug(f"Before x/y: {x}, {y}")
     # Convert percentage-based positions to x/y of current screen resolution
@@ -586,7 +532,4 @@ def normalize_point(x, y, width=None, height=None):
     return x, y
 
 
-
-door_positions = {
-    k: normalize_point( v[0], v[1] ) for k, v in door_positions.items()
-}
+door_positions = {k: normalize_point(v[0], v[1]) for k, v in door_positions.items()}
