@@ -27,38 +27,59 @@ def send_notification(message, driver):
     try:
         driver.execute_script(
             """
-        (function () {
-            const parent = document.body;  
+            (function () {
+                const parent = document.body;
+                if (!parent) return;
 
-            if (!parent) return;
+                const CONTAINER_ID = 'ldbot-notifications';
 
-            // 2) Create the element
-            const el = document.createElement('div');         
-            el.className = 'ldbot-notification';                  
+                // 1) Reuse the stack container if it already exists, otherwise create it
+                let stack = document.getElementById(CONTAINER_ID);
+                if (!stack) {
+                    stack = document.createElement('div');
+                    stack.id = CONTAINER_ID;
+                    Object.assign(stack.style, {
+                        position: 'fixed',
+                        top: '1em',
+                        right: '1em',
+                        zIndex: '99999',
+                        display: 'flex',
+                        flexDirection: 'column',   // stack vertically
+                        alignItems: 'flex-end',    // hug the right edge
+                        gap: '0.5em',              // space between notifications
+                        maxWidth: '90vw',
+                        pointerEvents: 'none'      // don't block clicks behind the stack
+                    });
+                    parent.appendChild(stack);
+                }
 
-            // 3) Content
-            el.textContent = 'MESSAGE_HERE';
+                // 2) Create the notification
+                const el = document.createElement('div');
+                el.className = 'ldbot-notification';
+                el.textContent = 'MESSAGE_HERE';
 
-            // 4) STYLES (edit this block)
-            Object.assign(el.style, {
-                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                color: '#fff',
-                padding: '1em 2em',
-                position: 'fixed',
-                top: '1em',
-                right: '1em',
-                zIndex: '99999',
-                fontFamily: 'monospace',
-                fontSize: '1.25rem'
-            });
+                // 3) STYLES (edit this block)
+                Object.assign(el.style, {
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    color: '#fff',
+                    padding: '1em 2em',
+                    borderRadius: '4px',
+                    fontFamily: 'monospace',
+                    fontSize: '1.25rem',
+                    maxWidth: '100%',
+                    boxSizing: 'border-box',
+                    pointerEvents: 'auto'          // the notification itself stays clickable
+                });
 
-            // 5) Insert into DOM
-            parent.appendChild(el); 
+                // 4) Insert at the TOP of the stack (newest first)
+                stack.insertBefore(el, stack.firstChild);
 
-            setTimeout(function(){
-                if (el) el.remove();
-            }, 2000)
-        })();
+                // 5) Remove after a delay, and clean up the container when it's empty
+                setTimeout(function () {
+                    el.remove();
+                    if (stack.isConnected && !stack.childElementCount) stack.remove();
+                }, 2000);
+            })();
         """.replace(  # Insert our message into the script, and make it json safe/escaped
                 "MESSAGE_HERE", json.dumps(message)
             )
